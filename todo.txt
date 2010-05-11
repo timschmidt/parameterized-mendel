@@ -1,0 +1,11 @@
+Todo:
+
+----
+- replace all STLs with OpenSCAD files
+----
+
+- add configuration option for vik's simplified kiwi mendel
+- fix vik's fudging of various hole diameters
+- create project-wide config file for single place to define diameters, etc.
+- unify z leadscrew base, z motor bracket, and z tensioner bracket files - optionally render as individual or combined parts
+- parameterize foot height on frame vertex, and make middle three holes optional
