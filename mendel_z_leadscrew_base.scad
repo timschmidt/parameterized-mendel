@@ -19,17 +19,13 @@
 
 <mendel_misc.inc>
 
-//translate([-4.5,-36.4,0]) import_stl("z-leadscrew-base_2off.stl");
-
 leadscrew_base_length=82;
 leadscrew_base_width=60;
-leadscrew_base_height=17;
-z_slider_grip_length=10;
+z_slider_grip_length=11;
 z_slider_grip_width=34;
 z_slider_grip_height=20;
-z_slider_rad=4.3;
-z_bearing_inset=29;
-bearing_608_rad=11;
+z_guide_bar_rad=4.3;
+z_bearing_inset=33;
 
 module z_leadscrew_body() {
 	hollow_len=leadscrew_base_length-5-z_slider_grip_length;
@@ -40,13 +36,13 @@ module z_leadscrew_body() {
 				box (leadscrew_base_length,leadscrew_base_width,leadscrew_base_height);
 			// Hollow in the centre of the bracket
 			translate ([z_slider_grip_length+hollow_len/2-0.1,0,leadscrew_base_height/2+8])
-				box(hollow_len,leadscrew_base_width-26,leadscrew_base_height);
+				box(hollow_len,leadscrew_base_width-27,leadscrew_base_height+0.1);
 		}
 		// Bit gripping Z guide rod
 		translate([z_slider_grip_length/2,0,z_slider_grip_height/2])
 			 box(z_slider_grip_length,z_slider_grip_width,z_slider_grip_height);
-		// Brace with Z sensor support holes in.
-		translate ([leadscrew_base_length-21,0,11]) box(17,leadscrew_base_width,22);
+		// Brace in the middle
+		translate ([leadscrew_base_length-21,0,11]) box(15,leadscrew_base_width,22);
 		// Panel at the back.
 		translate ([leadscrew_base_length-2.5,0,11]) box(5,leadscrew_base_width,22);
 		// Two blocks over the rear M8 bolt hole
@@ -61,36 +57,55 @@ module z_leadscrew_body() {
 				translate ([-9,17,0]) rotate([0,0,45]) box(20,20,3*leadscrew_base_height);
 			}
 	}
+	// Box to hold rail guide.
+	translate ([leadscrew_base_length-10-z_motor_rail_sep+2,(leadscrew_base_width-15)/2,(z_motor_rail_height+24)/2])
+		box(16,15,z_motor_rail_height+24);
 }
 
 
 module z_leadscrew_cutouts () {
-	// Z Slider grip
-	cylinder(h=leadscrew_base_height*4,r=z_slider_rad-0.2,center=true);
+	// Z Guide bar grip
+	cylinder(h=leadscrew_base_height*4,r=z_guide_bar_rad-0.2,center=true);
 	// 608 bearing
-	translate([z_bearing_inset,0,0]) cylinder(h=leadscrew_base_height*4,r=bearing_608_rad,center=true);
+	translate([z_bearing_inset,0,0]) cylinder(h=leadscrew_base_height*4,r=bearing_608_rad_v,center=true);
 	// Long M8 bolt holes
 	translate ([leadscrew_base_length/2,leadscrew_base_width/2-8,leadscrew_base_height/2]) rotate ([0,-90,0])
 		m8_hole_horiz(leadscrew_base_length*2);
 	translate ([leadscrew_base_length/2,-leadscrew_base_width/2+8,leadscrew_base_height/2]) rotate ([0,-90,0])
 		m8_hole_horiz(leadscrew_base_length*2);
+	// Recesses for nuts
+	translate ([0,leadscrew_base_width/2-8,leadscrew_base_height/2]) rotate ([0,90,0])
+		cylinder(h=12,r=11,center=true);
+	translate ([0,leadscrew_base_width/2,leadscrew_base_height/2])
+		box(12,12,leadscrew_base_height+1);
+	translate ([0,leadscrew_base_width/-2+8,leadscrew_base_height/2]) rotate ([0,90,0])
+		cylinder(h=12,r=11,center=true);
+	translate ([0,-leadscrew_base_width/2,leadscrew_base_height/2])
+		box(12,12,leadscrew_base_height+1);
 	// Rear M8 bolt hole
 	translate ([leadscrew_base_length-10,0,leadscrew_base_height-0.5]) rotate([0,-90,90])
 		m8_hole_horiz(leadscrew_base_width+10);
 	translate ([z_bearing_inset,0,0]) {
-		translate ([-m4_clearance_rad_v-bearing_608_rad,0,0]) m4_hole_vert(leadscrew_base_height);
-		rotate ([0,0,60]) translate ([bearing_608_rad+m4_clearance_rad_v,0,0])
+		translate ([-m4_clearance_rad_v-bearing_608_rad_v,0,0]) m4_hole_vert(leadscrew_base_height);
+		translate ([-bearing_608_rad_v,0,0]) box(6,m4_clearance_rad_v*2,leadscrew_base_height);
+		rotate ([0,0,60]) translate ([bearing_608_rad_v+m4_clearance_rad_v,0,0]) {
 			m4_hole_vert(leadscrew_base_height);
-		rotate ([0,0,-60]) translate ([bearing_608_rad+m4_clearance_rad_v,0,0])
+			translate ([-m4_clearance_rad_v,0,0])
+				box(6,m4_clearance_rad_v*2,leadscrew_base_height);
+		}
+		rotate ([0,0,-60]) translate ([bearing_608_rad_v+m4_clearance_rad_v,0,0]) {
 			m4_hole_vert(leadscrew_base_height);
+			translate ([-m4_clearance_rad_v,0,0])
+				box(6,m4_clearance_rad_v*2,leadscrew_base_height);
+		}
 	}
 	// Z clamp bolt holes
 	translate ([7,7,11.5]) rotate ([0,-90,0]) m4_hole_horiz_with_hex(20);
 	translate ([7,-7,11.5]) rotate ([0,-90,0]) m4_hole_horiz_with_hex(20);
-	// Z limit switch holes
-	translate ([58,0,3]) rotate ([0,180,0]) m4_hole_vert_with_hex(leadscrew_base_height*3);
-	translate ([60,11.5,3]) m4_hole_vert(leadscrew_base_height*3);
-	translate ([60,-11.5,3]) m4_hole_vert(leadscrew_base_height*3);
+	// Slider bolt hole for tensioning.
+	translate ([leadscrew_base_length-10-z_motor_rail_sep,(leadscrew_base_width)/2-6,leadscrew_base_height-0.5+z_motor_rail_height]) rotate([0,-90,90])
+		m4_hole_horiz_with_hex(leadscrew_base_width+10);
+
 }
 
 module z_leadscrew_base () {
