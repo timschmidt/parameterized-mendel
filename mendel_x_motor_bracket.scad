@@ -27,19 +27,21 @@ lower_bracket_base_width=9;
 lower_bracket_base_height=15;
 lower_bracket_length=63; // Also max dimension on X axis
 top_notch_height=lower_bracket_length+7.5;
-// The rail clamps.
-rail_clamp_width=20;
-rail_clamp_height=15;
 
-nema17_side=43;
+nema17_side=45;
 
 // Useful constants etc.
 
 m3_clearance_rad=1.9;
-m4_clearance_rad=2.8;
+m4_clearance_rad=2.9;
 m6_clearance_rad=3.7;
 m8_tight_rad=4.6;
 m8_clearance_rad=4.9;
+
+// The rail clamps.
+rail_clamp_width=20;
+rail_clamp_height=15;
+rail_rad=m8_tight_rad;	// m8_tight_rad, 5.2 for aluminium tube or 3.8 for 1/4 inch rail.
 
 module box(w,h,d) {
 	scale ([w,h,d]) cube(1, true);
@@ -192,9 +194,9 @@ module x_motor_bracket () {
 		translate ([0,(lower_bracket_width-12)/2,4-lower_bracket_base_width]) m4_hole_horiz_with_hex(50);
 		translate ([0,(lower_bracket_width-12)/-2,4-lower_bracket_base_width]) m4_hole_horiz_with_hex(50);
 		// Rails
-		translate ([0,x_rail_sep/2,0]) rotate ([0,90,0]) cylinder(h=200,r=m8_tight_rad,center=true);
+		translate ([0,x_rail_sep/2,0]) rotate ([0,90,0]) cylinder(h=200,r=rail_rad,center=true);
 		translate ([108,(x_rail_sep/2)+12,0]) box(200,40,2);
-		translate ([0,-x_rail_sep/2,0]) rotate ([0,90,0]) cylinder(h=200,r=m8_tight_rad,center=true);
+		translate ([0,-x_rail_sep/2,0]) rotate ([0,90,0]) cylinder(h=200,r=rail_rad,center=true);
 		rotate ([180,0,0]) translate ([108,(x_rail_sep/2)+12,0]) box(200,40,2);
 		// NEMA17
 		translate ([lower_bracket_width*0.35,0,5]) nema_17();
@@ -204,6 +206,8 @@ module x_motor_bracket () {
 		translate ([lower_bracket_length*0.85,x_rail_sep/2+m8_tight_rad*2,-5]) m4_hole_horiz_with_hex(60);
 		translate ([lower_bracket_length*0.35,-(x_rail_sep/2+m8_tight_rad*2),-5]) m4_hole_horiz_with_hex(60);
 		translate ([lower_bracket_length*0.85,-(x_rail_sep/2+m8_tight_rad*2),-5]) m4_hole_horiz_with_hex(60);
+		// Notch in the top
+		translate([lower_bracket_length,0,0]) cylinder(h=30,r=rail_rad,center=true);
 	}
 }
 
