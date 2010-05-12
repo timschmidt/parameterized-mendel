@@ -45,6 +45,9 @@ bearing_608_rad_v=11.8;
 //
 // Vertex and Y motor mount stuff.
 vertex_m8_sep=58;
+y_bar_hole_spacing=12;
+y_bar_cube_width=24;
+
 // X carriage design
 x_car_top_axle_offset=32;
 x_car_bottom_axle_offset=22.5;
@@ -158,6 +161,23 @@ module x_carriage_common_holes() {
 		translate ([(x_car_length-x_car_top_knob_width)/-2,0,0]) m4_hole_vert(60);
 		translate ([(x_car_length-x_car_top_knob_width)/-2,16.5,0]) m4_hole_vert(60);
 		translate ([(x_car_length-x_car_top_knob_width)/-2,-15,0])  m4_hole_vert(60);
+	}
+}
+
+// No .4 3/4 inch countersunk woodscrew (includes a lot of headspace)
+// Countersunk by default
+// If head=1 use pan-head screws (head has a flat bottom)
+screw_max_rad=2;
+module small_woodscrew(head) {
+	rotate ([0,0,30]) {
+		if (head == 1) {
+			translate([0,0,6]) cylinder(h=8, r1=3.0, r2=3.0);
+		}
+		else {
+			translate([0,0,6]) cylinder(h=8, r1=screw_max_rad, r2=4.0);
+		}
+		translate ([0,0,-7.5]) cylinder(h=3,r1=0.2,r2=screw_max_rad-0.2,center=true);
+		cylinder(h=12,r1=screw_max_rad-0.2,r2=screw_max_rad,center=true);
 	}
 }
 
