@@ -79,15 +79,19 @@ module cutouts() {
 		translate([-x_car_top_axle_offset,x_centre_cavity_width/2+4,x_car_top_height/2-1]) rotate([-90,-90,0])
 			m4_hole_horiz_with_hex(20);
 		// Horizontal holes in wing
-		translate([x_car_wing_offset+7,x_centre_cavity_width/2+5,x_car_top_height/2-1]) rotate([-90,-90,0])
+		translate([x_car_wing_offset+7,x_centre_cavity_width/2+6,x_car_top_height/2-1]) rotate([-90,-90,0])
 			m4_hole_horiz_with_hex(30);
-		translate([x_car_wing_offset-11.2,x_centre_cavity_width/2+5,x_car_top_height/2-1]) rotate([-90,-90,0])
+		translate([x_car_wing_offset-11.2,x_centre_cavity_width/2+6,x_car_top_height/2-1]) rotate([-90,-90,0])
 			m4_hole_horiz_with_hex(30);
 		// Notches for axles in bottom section.
-		translate ([x_car_bottom_axle_offset,x_centre_cavity_width/2-3,0]) rotate ([-17,0,0])
+		translate ([x_car_bottom_axle_offset,x_centre_cavity_width/2-2,0]) rotate ([-17,0,0])
 			cylinder(h=50,r=5,center=true);
-		translate ([-x_car_bottom_axle_offset,x_centre_cavity_width/2-3,0]) rotate ([-17,0,0])
+		translate ([x_car_bottom_axle_offset,x_centre_cavity_width/2,18])
+			rotate ([110,0,0]) cylinder(h=21,r=10,center=true);
+		translate ([-x_car_bottom_axle_offset,x_centre_cavity_width/2-2,0]) rotate ([-17,0,0])
 			cylinder(h=50,r=5,center=true);
+		translate ([-x_car_bottom_axle_offset,x_centre_cavity_width/2,18])
+			rotate ([110,0,0]) cylinder(h=21,r=10,center=true);
 	}
 }
 
