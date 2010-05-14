@@ -50,9 +50,9 @@ y_bar_cube_width=24;
 
 // X carriage design
 x_car_top_axle_offset=32;
-x_car_bottom_axle_offset=22.5;
-x_car_length=98;	// Length of the X carriage
-x_car_wing_offset=7.8;	// Offset of X Carriage wings from centre line
+x_car_bottom_axle_offset=22.5; // 50 for dual-head
+x_car_length=98;	// Length of the X carriage - 153 for dual-head
+x_car_wing_offset=7.8;	// Offset of X Carriage wings from centre line - 35.3 for dual-head
 x_car_top_knob_width=13;	// Width of knobbly bit at each end of the X carriage top section.
 x_belt_spacing=20;
 
