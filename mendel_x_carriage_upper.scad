@@ -69,6 +69,14 @@ module cutouts() {
 			m4_hole_vert_with_hex(50);
 		translate ([x_car_wing_offset,-extruder_mount_hole_spacing/2,wing_height-4]) rotate([180,0,30]) 
 			m4_hole_vert_with_hex(50);
+
+// uncomment for bfb style extruder
+/*		//space for bfb extruder
+		translate ([x_car_wing_offset,0,10]) rotate([180,0,30]) 
+			cylinder(r=21,h=11);
+		translate([x_car_wing_offset,0,0]) rotate([0,0,180]) triangle(42,30);
+*/
+ 
 		// Axle holes
 		translate([x_car_top_axle_offset,x_centre_cavity_width/-2-4,x_car_top_height/2-1]) rotate([90,-90,0])
 			m4_hole_horiz_with_hex(20);
@@ -79,23 +87,48 @@ module cutouts() {
 		translate([-x_car_top_axle_offset,x_centre_cavity_width/2+4,x_car_top_height/2-1]) rotate([-90,-90,0])
 			m4_hole_horiz_with_hex(20);
 		// Horizontal holes in wing
+		// mendel extruder
 		translate([x_car_wing_offset+7,x_centre_cavity_width/2+6,x_car_top_height/2-1]) rotate([-90,-90,0])
+		// bfb extruder
+		//translate([x_car_wing_offset+7,x_centre_cavity_width/2+9,x_car_top_height/2-1]) rotate([-90,-90,0])
 			m4_hole_horiz_with_hex(30);
+		// mendel extruder
 		translate([x_car_wing_offset-11.2,x_centre_cavity_width/2+6,x_car_top_height/2-1]) rotate([-90,-90,0])
+		// bfb extruder
+		//translate([x_car_wing_offset-11.2,x_centre_cavity_width/2+9,x_car_top_height/2-1]) rotate([-90,-90,0])
 			m4_hole_horiz_with_hex(30);
 		// Notches for axles in bottom section.
+		// mendel extruder
 		translate ([x_car_bottom_axle_offset,x_centre_cavity_width/2-2,0]) rotate ([-17,0,0])
+		// bfb extruder
+		//translate ([x_car_bottom_axle_offset,x_centre_cavity_width/2-3,0]) rotate ([-17,0,0])
 			cylinder(h=50,r=5,center=true);
+		// mendel extruder
 		translate ([x_car_bottom_axle_offset,x_centre_cavity_width/2,18])
 			rotate ([110,0,0]) cylinder(h=21,r=10,center=true);
 		translate ([-x_car_bottom_axle_offset,x_centre_cavity_width/2-2,0]) rotate ([-17,0,0])
 			cylinder(h=50,r=5,center=true);
 		translate ([-x_car_bottom_axle_offset,x_centre_cavity_width/2,18])
 			rotate ([110,0,0]) cylinder(h=21,r=10,center=true);
+		// bfb extruder
+/*		translate ([-x_car_bottom_axle_offset,x_centre_cavity_width/2-3,0]) rotate ([-17,0,0])
+			cylinder(h=50,r=5,center=true);
+*/
 	}
 }
 
+module triangle(width,height)
+{
+	difference() {
+		 cylinder(r=width/3*sqrt(3)-2,h=height);
+		for(i = [0:2])
+		{
+			rotate([0,0,i*360/3]) 
+				translate([width/2+(width/6)*sqrt(3),0,height/2]) cube([width,width,height],center=true);
+		}
+	}
 
+}
 
 module x_carriage_upper() {
 	difference () {
