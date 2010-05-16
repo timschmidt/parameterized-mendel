@@ -75,6 +75,8 @@ module main()
    
 }
 
+translate([0,0,19]){
 rotate([180,0,0]){
 	main();
+}
 }
