@@ -1,5 +1,5 @@
 /*
- *  Miscellaneous constants and standard objects used in Mendel 
+ *  Miscellaneous standard objects used in Mendel 
  *  by Vik Olliver 29-03-2010. Uses components of the
  *  OpenSCAD Shapes Library (www.openscad.at)
  *  Copyright (C) 2009  Catarina Mota <clifford@clifford.at>
@@ -29,50 +29,6 @@
 */
 
 
-// Useful constants etc.
-nema17_side=45;
-m3_clearance_rad=1.9;
-m4_clearance_rad_v=2.8;	// Vertical clearance
-m4_clearance_rad_h=2.2;	// Horizontal clearance
-m6_clearance_rad=3.7;
-m8_tight_rad=4.6;
-m8_clearance_rad=4.9;
-bearing_608_rad_v=11.8;
-
-
-
-// Stuff relevant to the construction of various interconnecting bits of Mendel.
-//
-// Vertex and Y motor mount stuff.
-vertex_m8_sep=58;
-y_bar_hole_spacing=12;
-y_bar_cube_width=24;
-
-// X carriage design - uncomment your number of extruders
-x_car_top_axle_offset=32;
-x_car_top_knob_width=13;	// Width of knobbly bit at each end of the X carriage top section.
-x_belt_spacing=20;
-
-// single extruder
-x_car_bottom_axle_offset=22.5;
-x_car_length=98;	// Length of the X carriage
-x_car_wing_offset=7.8;	// Offset of X Carriage wings from centre line
-
-// dual extruder
-//x_car_bottom_axle_offset=50;
-//x_car_length=153;	// Length of the X carriage
-//x_car_wing_offset=35.3;	// Offset of X Carriage wings from centre line
-
-// Extruder size etc.
-extruder_mount_hole_spacing=50;
-extruder_thick=20;
-extruder_height=44;
-
-// Axis leadscrew holder
-leadscrew_base_height=17;
-z_guide_bar_rad=4.3;	// Radius of the Z guide bars
-z_motor_rail_sep=63;
-z_motor_rail_height=12;
 
 module box(w,h,d) {
 	scale ([w,h,d]) cube(1, true);

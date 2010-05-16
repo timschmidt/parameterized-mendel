@@ -17,7 +17,8 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-<mendel_misc.inc>
+<mendel.inc>
+<mendel.conf>
 
 //rotate([0,0,90]) translate([-49,-54,0.5]) import_stl("x-carriage-lower_1off.stl");
 

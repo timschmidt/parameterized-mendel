@@ -17,7 +17,8 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-<mendel_misc.inc>
+<mendel.inc>
+<mendel.conf>
 
 z_motor_bracket_length=80;
 z_motor_base_width=nema17_side+12;

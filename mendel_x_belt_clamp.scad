@@ -17,7 +17,8 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-<mendel_misc.inc>
+<mendel.inc>
+<mendel.conf>
 
 wing_height=34.5+1;
 x_belt_clamp_thick=10;

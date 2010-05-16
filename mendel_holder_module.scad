@@ -2,7 +2,8 @@
 //
 //  GPL V3 Licenced, by Vik Olliver 2010-03-16
 
-<mendel_misc.inc>
+<mendel.inc>
+<mendel.conf>
 
 holder_length=96;
 holder_width=96;

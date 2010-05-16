@@ -4,7 +4,8 @@
 // Modded by vik@diamondage.co.nz
 // GNU GPLV3
 
-<mendel_misc.inc>
+<mendel.inc>
+<mendel.conf>
 
 // Tip for printing version with nut traps. Print layers with nut traps, then insert real nuts and continue printing with them.
 
