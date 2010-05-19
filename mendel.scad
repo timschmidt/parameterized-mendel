@@ -39,6 +39,9 @@
 1x 11t17p gear
 1x 39t17p gear
 3x drive pully - modified
+
+we should optionally be able to render the mendel parts in printable sets, or as an assembled mendel.  To render the assembled mendel, we should have a function that renders the structural threaded rod, then a function that places the parts at programmable distances and orientations along that rod.
+
 */
 
 import_stl("example012.stl", convexity = 5);
