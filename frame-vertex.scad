@@ -15,7 +15,7 @@ FN=80;
 translate ([0,0,vertex_height/2])difference() 
 {
 	union () {
-		dxf_linear_extrude(file = "vertex-body-fixed-qcad.dxf",height=vertex_height,center=true);
+		dxf_linear_extrude(file = "frame-vertex.dxf",height=vertex_height,center=true);
 		//import_stl("vertex-body-fixed.stl");
 		if (with_foot==1) {
 			translate([40,-15,0]) vertex_foot();
