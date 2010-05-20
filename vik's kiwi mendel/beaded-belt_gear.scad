@@ -1,4 +1,5 @@
-<mendel_misc.inc>
+<mendel.inc>
+<mendel.conf>
 
 module driven_gear() {
 	difference () {
