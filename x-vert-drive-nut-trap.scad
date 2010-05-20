@@ -30,8 +30,8 @@ difference () {
 	translate(v=[17,5.5,-1]) cylinder(r=2,h=10);
 	translate(v=[4.5,25.5,-1]) cylinder(r=2,h=10);
 	translate(v=[17,25.5,-1]) cylinder(r=2,h=10);
-	translate(v=[4.5,3.5,-1]) cube(size=[12.5,4,4]);
-	translate(v=[4.5,23.5,-1]) cube(size=[12.5,4,4]);
-	rotate([90,0,0]) translate(v=[10.75,0,-32]) cylinder(r=4,h=33);
-	rotate([90,0,0]) translate(v=[10.75,0,-15.5]) hexagon(12,6);
+	translate(v=[4.5,3.5,5]) cube(size=[12.5,4,4]);
+	translate(v=[4.5,23.5,5]) cube(size=[12.5,4,4]);
+	rotate([90,0,0]) translate(v=[10.75,8,-32]) cylinder(r=4,h=33);
+	rotate([90,0,0]) translate(v=[10.75,8,-15.5]) hexagon(12,6);
 }
