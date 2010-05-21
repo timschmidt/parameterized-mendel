@@ -23,5 +23,5 @@ difference () {
 	cube(size=[26,20,18]);
 	translate(v=[6,8,-1]) cylinder(r=2,h=20);
 	translate(v=[20,8,-1]) cylinder(r=2,h=20);
-	rotate([90,0,0]) translate(v=[13,0,-21]) cylinder(r=4,h=22);
+	rotate([90,0,0]) translate(v=[13,18,-21]) cylinder(r=4,h=22);
 }
