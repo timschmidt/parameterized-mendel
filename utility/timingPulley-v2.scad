@@ -17,7 +17,7 @@ hubHeight = 8; // the hub is the thick cylinder connected to the pulley to allow
 flanges = 2; // the rims that keep the belt from going anywhere
 hubSetScewDiameter = 3; // use either a set screw or nut on a shaft. Set to 0 to not use a set screw.
 numSetScrews = 3;
-numTeeth = 14; // this value together with the pitch determines the pulley diameter
+numTeeth = 20; // this value together with the pitch determines the pulley diameter
 toothType = 3; // 1 = slightly rounded, 2 = oval sharp, 3 = square. For square, set the toothWith a little low.
 
 // Belt properties:
@@ -30,9 +30,8 @@ toothWidth = 1.4; // Teeth of the PULLEY, that is.
 // //////////////////////////////
 // Includes
 // //////////////////////////////
-<teardrop.scad>
-// See the bottom of the script to comment it out if you don't want to use this include!
-//
+<mendel.inc>
+<mendel.conf>
 
 // //////////////////////////////
 // OpenSCAD SCRIPT
@@ -215,27 +214,3 @@ module timingPulley(
 
 
 }
-
-
-/* include: module teardrop(radius,height,truncated)
-module teardrop(radius,height,truncated)
-{
-	truncateMM = 1;
-	union()
-	{
-		if(truncated == true)
-		{
-		intersection()
-		{
-		translate([0,0,height/2]) scale([1,1,height]) rotate([0,0,180]) cube([radius*2.5,radius*2,1],center=true);
-		scale([1,1,height]) rotate([0,0,3*45]) cube([radius,radius,1]);
-		}
-		}
-		if(truncated == false)
-		{
-		scale([1,1,height]) rotate([0,0,3*45]) cube([radius,radius,1]);
-		}
-		#cylinder(r=radius, h = height);
-	}
-}
-*/

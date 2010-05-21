@@ -43,6 +43,27 @@ module hexagon(height, depth) {
 		}
 }
 
+module teardrop(radius,height,truncated)
+{
+	truncateMM = 1;
+	union()
+	{
+		if(truncated == true)
+		{
+		intersection()
+		{
+		translate([0,0,height/2]) scale([1,1,height]) rotate([0,0,180]) cube([radius*2.5,radius*2,1],center=true);
+		scale([1,1,height]) rotate([0,0,3*45]) cube([radius,radius,1]);
+		}
+		}
+		if(truncated == false)
+		{
+		scale([1,1,height]) rotate([0,0,3*45]) cube([radius,radius,1]);
+		}
+		#cylinder(r=radius, h = height);
+	}
+}
+
 module m8_hole_horiz(l) {
 	cylinder(l,m8_clearance_rad,m8_clearance_rad,center=true);
 	translate ([m8_clearance_rad*0.6,0,0]) rotate ([0,0,45])
