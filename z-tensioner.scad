@@ -56,13 +56,13 @@ module z_leadscrew_cutouts () {
 	translate ([leadscrew_base_length/2,-leadscrew_base_width/2+8,leadscrew_base_height/2]) rotate ([0,-90,0])
 		m8_hole_horiz(leadscrew_base_length*2);
 	// Recesses for nuts
-	translate ([0,leadscrew_base_width/2-8,leadscrew_base_height/2]) rotate ([0,90,0])
+	translate ([-2,leadscrew_base_width/2-8,leadscrew_base_height/2]) rotate ([0,90,0])
 		cylinder(h=12,r=11,center=true);
-	translate ([0,leadscrew_base_width/2,leadscrew_base_height/2])
+	translate ([-2,leadscrew_base_width/2,leadscrew_base_height/2])
 		box(12,12,leadscrew_base_height+1);
-	translate ([0,leadscrew_base_width/-2+8,leadscrew_base_height/2]) rotate ([0,90,0])
+	translate ([-2,leadscrew_base_width/-2+8,leadscrew_base_height/2]) rotate ([0,90,0])
 		cylinder(h=12,r=11,center=true);
-	translate ([0,-leadscrew_base_width/2,leadscrew_base_height/2])
+	translate ([-2,-leadscrew_base_width/2,leadscrew_base_height/2])
 		box(12,12,leadscrew_base_height+1);
 	// Rear M8 bolt hole
 	translate ([leadscrew_base_length-10,0,leadscrew_base_height-0.5]) rotate([0,-90,90])
