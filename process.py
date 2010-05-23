@@ -1,11 +1,23 @@
 #!/usr/bin/python
 
-import os,string,commands,sha,time
+import os,string,commands,sha,time,platform
 
-openscad_com = 'openscad'
-pathd = '/'
-export_folder = 'generated'
-sha_path = 'part_sha.txt'
+plat = platform.system()
+
+print plat
+
+if plat == 'Linux':
+	openscad_com = 'openscad'
+	pathd = '/'
+	export_folder = 'generated'
+	sha_path = 'part_sha.txt'
+
+if plat == 'Windows':
+	print 'Windows untested , please edit'
+	openscad_com = 'openscad.exe'
+	pathd = '\\'
+	export_folder = 'generated'
+	sha_path = 'part_sha.txt'
 
 print 'Generate STL files for mendel'
 print
@@ -55,6 +67,7 @@ def changed(file_name,digest):
 		if digest == sha_dict[file_name]:
 			return 0
 		else:
+			sha_dict[file_name] = digest
 			return 1	
 
 	else:
@@ -71,13 +84,14 @@ def save_sums(sums):
 	f.close()
 
 total = 0
+print 'Scad files:'
 for i in scad_files:
 	f = open(i)
 	d = f.read()
 	f.close()
 	s = sha.sha(d)
 	if changed(i,s.hexdigest()):
-		print i + '  has changed' 
+		print i + ' has changed' 
 		root_name = i[:-4]
 		t = time.time()
 		command = openscad_com +' -s '+export_folder + pathd + root_name+'stl '+i
@@ -90,6 +104,21 @@ for i in scad_files:
 		print 
 		total = total + delta
 
-print "total time =" + str(int(total))
-	
+save_sums(sha_dict)
+print 'STL files:'
+for i in stl_files:
+	f = open(i)
+	d = f.read()
+	f.close()
+	s = sha.sha(d)
+	if changed(i,s.hexdigest()):
+		print i + '  has changed' 
+		root_name = i[:-4]
+		f = open(export_folder + pathd + root_name+'.stl','w')
+		f.write(d)
+		f.close()
+print	
+print "total time " + str(int(total)) + " seconds"
+
+save_sums(sha_dict)
 
