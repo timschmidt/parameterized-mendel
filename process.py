@@ -7,15 +7,20 @@ pathd = '/'
 export_folder = 'generated'
 sha_path = 'part_sha.txt'
 
+print 'Generate STL files for mendel'
+print
 
 ## load sha sums 
 sha_dict =  {}
-f = open(sha_path)
-li = f.readlines()
-f.close()
-for i in li:
-	tmp = string.split(string.strip(i),',')
-	sha_dict[tmp[0]] = tmp[1]
+try:
+	f = open(sha_path)
+	li = f.readlines()
+	f.close()
+	for i in li:
+		tmp = string.split(string.strip(i),',')
+		sha_dict[tmp[0]] = tmp[1]
+except:
+	print 'no existing sums'
 
 # make export folder
 try:
@@ -36,8 +41,14 @@ for i in li:
 
 #print scad_files
 #print stl_files
-#print len(stl_files)
-#print len(scad_files)
+stl_count = len(stl_files)
+scad_count = len(scad_files)
+total_count = stl_count + scad_count 
+
+print str(stl_count) + ' stl files' 
+print str(scad_count) + ' scad files' 
+print str(int(((scad_count/float(total_count))*100))) + '% finished '
+print
 
 def changed(file_name,digest):
 	if sha_dict.has_key(file_name):
@@ -46,26 +57,39 @@ def changed(file_name,digest):
 		else:
 			return 1	
 
-	return 1 
-sums = []
-	
+	else:
+		sha_dict[file_name] = digest
+		return 1
+
+def save_sums(sums):
+	# save the sha sums for next time.
+	f = open(sha_path,'w')
+	k = sums.keys()
+	for i in sums:
+		f.write(str(i)+','+str(sums[i]))
+		f.write('\n')
+	f.close()
+
+total = 0
 for i in scad_files:
 	f = open(i)
 	d = f.read()
 	f.close()
 	s = sha.sha(d)
-	sums.append([i,s.hexdigest()])
 	if changed(i,s.hexdigest()):
+		print i + '  has changed' 
 		root_name = i[:-4]
 		t = time.time()
 		command = openscad_com +' -s '+export_folder + pathd + root_name+'stl '+i
-		print command
+		print i + ' building ... '
 		commands.getoutput(command)
+		save_sums(sha_dict)
 		after = time.time()
-		print after - t 
+		delta = after - t 
+		print i + ' built in ' + str(int(delta)) + ' seconds'
+		print 
+		total = total + delta
 
-f = open(sha_path,'w')
-for i in sums:
-	f.write(str(i[0])+','+str(i[1]))
-	f.write('\n')
-f.close()
+print "total time =" + str(int(total))
+	
+
