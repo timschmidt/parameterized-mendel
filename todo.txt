@@ -1,11 +1,23 @@
 Todo:
 
-----
-- replace all STLs with OpenSCAD files
-----
+-- Short Term Goals --
+ - replace all STLs with OpenSCAD files
 
-- add configuration option for vik's simplified kiwi mendel
-- fix vik's fudging of various hole diameters
-- unify z leadscrew base, z motor bracket, and z tensioner bracket files - optionally render as individual or combined parts
-- parameterize foot height on frame vertex, and make middle three holes optional
-- merge x carriage upper and lower with modified bfb versions
+-- Medium Term Goals --
+ - improve parameterization
+  - move all defined constants into mendel.conf
+  - consolidate modules in mendel.inc
+  - re-use constants and modules wherever possible
+  - create commented pre-defined configurations of the mendel in mendel.conf for easy selection of a few major variants
+
+-- Long Term Goals --
+ - improve servicability
+  - re-design parts to allow any individual part to be removed without requiring significant disassembly
+  - modify parts for easy tool access after installation
+
+
+-- Individual Items --
+ - fix vik's fudging of various hole diameters
+ - unify z leadscrew base, z motor bracket, and z tensioner bracket files - optionally render as individual or combined parts
+ - parameterize foot height on frame vertex, and make middle three holes optional
+ - merge x carriage upper and lower with modified bfb versions
