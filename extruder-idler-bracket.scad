@@ -2,6 +2,9 @@
 /*
  *  Extruder Idler Block
  *  by Timothy Schmidt.
+ *  Modified 19-May-2010 by vik"diamondage.co.nz
+ *	Parameterised it to use Mendel includes.
+ *	Made it thicker.
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -19,12 +22,19 @@
  *
 */
 
+<mendel.conf>
+<mendel.inc>
+
+
 difference () {
-	cube(size=[23,35,10]);
-	translate(v=[-1,17.5,8]) rotate([0,90,0]) cylinder(r=4, h=25);
-	translate(v=[7.5,17.5,8]) rotate([0,90,0]) cylinder(r=11.5, h=8);
-	translate(v=[5,4.5,-1]) cylinder(r=2,h=12);
-	translate(v=[18,4.5,-1]) cylinder(r=2,h=12);
-	translate(v=[5,30.5,-1]) cylinder(r=2,h=12);
-	translate(v=[18,30.5,-1]) cylinder(r=2,h=12);
+	// Body
+	cube(size=[ei_block_wid,ei_block_len,13]);
+	// Axle and bearing cavity. Yes, these are not concentric. It gives the bearing room to rotate.
+	translate(v=[ei_block_wid/2,ei_block_len/2,13]) rotate([0,90,0]) cylinder(r=m8_tight_rad, h=25,center=true);
+	translate(v=[ei_block_wid/2,ei_block_len/2,12]) rotate([0,90,0]) cylinder(r=bearing_608_rad_v+1, h=8.4,center=true);
+	// Bolt holes
+	#translate(v=[ei_indent,ei_indent,-1]) m4_hole_vert(30);
+	translate(v=[ei_block_wid-ei_indent,ei_indent,-1]) m4_hole_vert(30);
+	translate(v=[ei_indent,ei_block_len-ei_indent,-1]) m4_hole_vert(30);
+	translate(v=[ei_block_wid-ei_indent,ei_block_len-ei_indent,-1]) m4_hole_vert(30);
 }
