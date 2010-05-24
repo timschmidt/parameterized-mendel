@@ -64,9 +64,15 @@ module teardrop(radius,height,truncated)
 	}
 }
 
+module hole_horiz(rad,l) {
+	cylinder(l,rad,rad,center=true);
+	translate ([rad*0.67,0,0]) rotate ([0,0,45])
+		cube([rad,rad,l],center=true);
+}
+
 module m8_hole_horiz(l) {
 	cylinder(l,m8_clearance_rad,m8_clearance_rad,center=true);
-	translate ([m8_clearance_rad*0.6,0,0]) rotate ([0,0,45])
+	translate ([m8_clearance_rad*0.67,0,0]) rotate ([0,0,45])
 		cube([m8_clearance_rad,m8_clearance_rad,l],center=true);
 }
 
