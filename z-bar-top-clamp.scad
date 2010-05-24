@@ -19,11 +19,42 @@
  *
 */
 
-difference () {
-	cube(size=[76,16,10]);
-	translate(v=[30,8,-1]) cylinder(r=2,h=12);
-	translate(v=[46,8,-1]) cylinder(r=2,h=12);
-	translate(v=[8.5,8,-1]) cylinder(r=4,h=12);
-	translate(v=[67.5,8,-1]) cylinder(r=4,h=12);
-	rotate([90,0,0]) translate(v=[38,10,-17]) cylinder(r=4,h=18);
+//Corner cuts added by Tonokip
+
+//<tonokip.inc>
+
+module yhole(diameter) rotate(a=90,v=[1,0,0]) zhole(diameter); 
+module zhole(diameter) cylinder(h=200,r=(diameter/2),center=true);
+
+vM8=9;
+vM4=5;
+
+hM8=8.1;
+
+width=16;
+length=76;
+height=10;
+
+translate([0,0,height/2]) //Reposition Z
+difference ()
+{
+	//Main Block
+	cube(size=[length,width,height],center=true);
+
+	//M4
+	translate(v=[8,0,0]) zhole(vM4);
+	translate(v=[-8,0,0]) zhole(vM4);
+
+	//M8
+	translate(v=[29.5,0,0]) zhole(vM8);
+	translate(v=[-29.5,0,0]) zhole(vM8);
+
+	//Clamped Hole
+	translate([0,0,height/2]) yhole(hM8);
+
+	//Corner cuts
+	translate([-length/2, 11,0]) rotate(45, [0,0,1]) cube([10,10,100],center=true);
+	translate([-length/2,-11,0]) rotate(45, [0,0,1]) cube([10,10,100],center=true);
+	translate([ length/2, 11,0]) rotate(45, [0,0,1]) cube([10,10,100],center=true);
+	translate([ length/2,-11,0]) rotate(45, [0,0,1]) cube([10,10,100],center=true);
 }
