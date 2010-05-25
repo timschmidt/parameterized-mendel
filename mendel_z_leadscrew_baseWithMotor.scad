@@ -1,7 +1,7 @@
 /*
  *Z Axis leadscrew bearing holder WITH MOTOR for Mendel
  *   Based on "Z Axis leadscrew bearing holder for Mendel" by Vik Olliver. (C) 4-Apr-2010
- * Nicholas C Lewis © May 24, 2010
+ * Nicholas C Lewis  May 24, 2010
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,7 +18,8 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-<mendel_misc.inc>
+<mendel.inc>
+<mendel.conf>
 
 //translate([-4.5,-36.4,0]) import_stl("z-leadscrew-base_2off.stl");
 
