@@ -48,6 +48,8 @@ li = os.listdir('./')
 for i in li:
 	if i[-4:]  == 'scad' :
 		scad_files.append(i)
+	if i[-3:]  == 'inc' :
+		scad_files.append(i)
 	if i[-3:]  == 'stl' :
 		stl_files.append(i)
 
