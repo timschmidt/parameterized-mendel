@@ -33,7 +33,7 @@ difference () {
 	translate(v=[ei_block_wid/2,ei_block_len/2,13]) rotate([0,90,0]) cylinder(r=m8_tight_rad, h=25,center=true);
 	translate(v=[ei_block_wid/2,ei_block_len/2,12]) rotate([0,90,0]) cylinder(r=bearing_608_rad_v+1, h=8.4,center=true);
 	// Bolt holes
-	#translate(v=[ei_indent,ei_indent,-1]) m4_hole_vert(30);
+	translate(v=[ei_indent,ei_indent,-1]) m4_hole_vert(30);
 	translate(v=[ei_block_wid-ei_indent,ei_indent,-1]) m4_hole_vert(30);
 	translate(v=[ei_indent,ei_block_len-ei_indent,-1]) m4_hole_vert(30);
 	translate(v=[ei_block_wid-ei_indent,ei_block_len-ei_indent,-1]) m4_hole_vert(30);
