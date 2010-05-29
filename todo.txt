@@ -21,3 +21,84 @@ Todo:
  - unify z leadscrew base, z motor bracket, and z tensioner bracket files - optionally render as individual or combined parts
  - parameterize foot height on frame vertex, and make middle three holes optional
  - merge x carriage upper and lower with modified bfb versions
+
+-- Additions from fen --
+z axis rod clamp is not the same spacing as other 6mm clamp arch thingies
+clamp arch thingies should accept 20mm m3 shcs
+clamp arch thingies are too small for 6mm rods
+clamp arch thingies should work with 20mm m3's, and have hexagon nut holders
+90 degree thingies should only need 1 clamp screw each
+y front clamp thingy screws interfere with nema 17 motor
+enlarge 22mm holes in motor connector interfaces to accomodate larger pulley hubs + set screws sticking out
+
+
+reduce number of 30mm m3's to <50 qty
+eliminate 12mm m3's
+z axis 180 should be 1 piece.. shouldnt need washers to offset the bearings
+move z 180 side leadscrew closer to smooth z rod, to increase x travel
+space for washer on z 360 piece. reengineer z 360 assy to not need threaded rod
+add holes for nema17 on x y z
+z nut traps only need 4 screws, two on the outside, and front and back of the screw
+get rid of nut traps on y chassis
+fix misaligned counterbore on x carriage
+get rid of counterbores on x carriage, switch to hexagons
+x-carriage hexagon should be symmetrical (two less holes? what are they for?)
+x carriage triangular lumps may interfere with bearing next to it
+x carriage triangular lumps need nut bearing surface on opposite side
+x carriage needs a little more stiffness (thickness at thinnest part)
+x carriage diagonal 30mm m3's interfere with vertical 20mm's (barely)
+x carriage should be symmetrical distance from rods or belt will rub on backside
+x carriage only needs one vertical 360 bearing and should have outer diagonals on ends (wider wheelbase = more rigidity against racking forces)
+speaking of racking forces, belt clamp should be more central (offset motor, huge redesign of x axis)
+belt clamp should have same spacing as arch thingies
+y 360 sliders are too wide for 30mm m3+two nuts + lock washer (barely) (+two washers would be nice)
+only need 2 y 180's, not 4
+true kinematic design would use less bearings
+lower y axis somehow, it's too much clearance between bottom of y and bottom of machine, i.e. switch z tension rods+frame rods
+purge plate gets really close to y motor bracket
+wtf is purge plate for??
+need more 623 bearings in BOM
+should have adjustable (spring?) tension idlers for x and y belts
+y idler washers overlap < 1mm
+z has way too many idler pulleys (should have like one tensioner and that's it)
+z leadscrew blocks are too tall for 30mm to comfortably fit idlers
+use timing pulley for y idler instead of smooth?
+nophead pulley needs counterbore for m3 shcs head, or switch to clamp configuration instead of set screw
+y motor bracket doesn't clear nophead pulley base
+brackets shouldn't have full circle holes, should be slots for easy removal, or clamps
+something's fucked up with the y axis belt - the top half of the loop makes a triangle instead of a line, this causes tension changes (oops my frog was on upside down, this could be clearer in the docs)
+y (and x?) belt clamp don't work with m12's (maybe this is ok)
+you really do need to use lock nuts on the frame pieces <- hmm. maybe not
+#12 SAE lock washers don't fit on M6 threaded rod, FYI
+
+some measurements:
+x travel: 126mm
+y travel: 154mm <- more like 145mm because of some belt tension weirdness at the motor end
+10 washers on each idler pulley; could be reduced with 20mm's and jamb nuts instead
+
+x idler pulley to bar: 8mm
+x carriage clamp face to bar: 17mm
+x carriage opposite face to bar: 20mm
+
+x blunt plate:
+ width: 54mm
+ height: 24mm
+ thickness: 4mm
+ horizontal hole spacing: 46.5mm
+ vertical hole spacing: 14mm
+
+hardware used: (first count)
+m3x30: 39
+m3x20: 70
+m3x12: 18? 24?
+m6 nut: 88
+m6 washer: 74?
+m3 fender washer:
+m3 washer:
+m3 lock washer:
+
+
+existing stepper hookup:
+sync sync enable max min dir step gnd
+BW B OW O NW G GW N
+
