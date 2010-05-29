@@ -22,6 +22,7 @@ Todo:
  - parameterize foot height on frame vertex, and make middle three holes optional
  - merge x carriage upper and lower with modified bfb versions
  - thin the X vert drive side plate 180 a bit, to reduce X axis guide rod bending
+ - add nut trap void to x vert side plate 180, eliminate nut trap jig part.
 
 -- Additions from fen for mini-mendel --
 z axis rod clamp is not the same spacing as other 6mm clamp arch thingies
