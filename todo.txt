@@ -22,7 +22,7 @@ Todo:
  - parameterize foot height on frame vertex, and make middle three holes optional
  - merge x carriage upper and lower with modified bfb versions
 
--- Additions from fen --
+-- Additions from fen for mini-mendel --
 z axis rod clamp is not the same spacing as other 6mm clamp arch thingies
 clamp arch thingies should accept 20mm m3 shcs
 clamp arch thingies are too small for 6mm rods
