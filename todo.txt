@@ -21,6 +21,7 @@ Todo:
  - unify z leadscrew base, z motor bracket, and z tensioner bracket files - optionally render as individual or combined parts
  - parameterize foot height on frame vertex, and make middle three holes optional
  - merge x carriage upper and lower with modified bfb versions
+ - thin the X vert drive side plate 180 a bit, to reduce X axis guide rod bending
 
 -- Additions from fen for mini-mendel --
 z axis rod clamp is not the same spacing as other 6mm clamp arch thingies
