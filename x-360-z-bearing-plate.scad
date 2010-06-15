@@ -3,13 +3,17 @@
 // 5-23-2010
 
 $fn = 12;
+$mirrored = 0;
 
+if ($mirrored == 1) {mirror([1,0,0]) part();} else {part();}
+
+module part() {
 difference()
 {
   union()
   {
-    dxf_linear_extrude(file = "x-360-z-bearing-plate-bottom-outline.dxf",height=12,center=false);
-    dxf_linear_extrude(file = "x-360-z-bearing-plate-top-outline.dxf",height=(25),center=false);
+    linear_extrude(file = "x-360-z-bearing-plate-bottom-outline.dxf",height=12,center=false,convexity = 5);
+    linear_extrude(file = "x-360-z-bearing-plate-top-outline.dxf",height=(25),center=false,convexity = 5);
   }
 
   translate([0,36.909,4.615]) xteardrop(4,200);
@@ -17,6 +21,7 @@ difference()
   translate([0,55.679,6.937]) xteardrop(4,200);
   translate([44.2302,49.714,19.621]) rotate(50,[0,0,1]) xteardrop(4,200);
 
+}
 }
 
 module xteardrop(diameter,length) rotate(a=-90,v=[0,1,0]) rotate(a=-90,v=[0,0,1]) zteardrop(diameter,length);
