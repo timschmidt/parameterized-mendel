@@ -17,8 +17,8 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-<mendel.inc>
-<mendel.conf>
+include <mendel.inc>
+include <mendel.conf>
 
 // side holes on stepper-plate.par (maybe add to mendel.conf?)
 mounting_hole_spacing=30;
