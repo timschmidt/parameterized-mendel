@@ -19,6 +19,13 @@ if plat == 'Windows':
 	export_folder = 'generated'
 	sha_path = 'part_sha.txt'
 
+if plat == 'Darwin':
+	print 'Mac OSX untested, please edit'
+	openscad_com = '/Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD'
+	pathd = '/'
+	export_folder = 'generated'
+	sha_path = 'part_sha.txt'
+
 print 'Generate STL files for mendel'
 print
 
