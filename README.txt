@@ -1,6 +1,8 @@
 Parameterized Mendel
 ====================
 
+http://reprap.org/wiki/Parameterized_Mendel
+
 This repository contains CAD files for the RepRap Mendel model 3D printer.
 
 The v1.0 directory is intended to house a version of the Mendel which closely resembles the one initially released at reprap.org. Bugfixes and minor improvements will be incorporated, but always with an eye toward backwards compatibility.
